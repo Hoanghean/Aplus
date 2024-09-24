@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomeComponent from "./components/HomeComponent";
+import GradeComponent from "./components/GradeComponent";
+import NavBar from "./components/NavBar";
+import "./assets/styles.css";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router basename={process.env.PUBLIC_URL}> {/* Thay 'repository-name' bằng tên repo của bạn */}
+      <NavBar /> {/* Bọc NavBar trong Router nếu bạn sử dụng Link */}
+      <Routes>
+        <Route path="/" element={<HomeComponent />} />
+        <Route path="/grade" element={<GradeComponent />} />
+      </Routes>
+    </Router>
   );
 }
-
-export default App;
